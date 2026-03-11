@@ -1,8 +1,12 @@
 class AppConstants {
-  static const String supabaseUrl = 'https://kgylvsenyoqjwonmoibs.supabase.co';
-  static const String supabaseAnonKey =
-      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtneWx2c2VueW9xandvbm1vaWJzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE4MTYwOTAsImV4cCI6MjA4NzM5MjA5MH0.wYtOxtn911MPyLCIoAGJJo6lGzsPjSWHQZiqzJSYO6A';
-  static const String geminiApiKey = 'AIzaSyBTRMAhiAScMBFfbkz0qxzZLXmDyHRJqMA';
+  // Injected at build time via --dart-define (never hardcode secrets in source)
+  // Build: flutter run --dart-define=GEMINI_API_KEY=xxx --dart-define=SUPABASE_ANON_KEY=xxx
+  static const String supabaseUrl = String.fromEnvironment(
+    'SUPABASE_URL',
+    defaultValue: 'https://kgylvsenyoqjwonmoibs.supabase.co',
+  );
+  static const String supabaseAnonKey = String.fromEnvironment('SUPABASE_ANON_KEY');
+  static const String geminiApiKey = String.fromEnvironment('GEMINI_API_KEY');
 
   // Storage
   static const String userFilesBucket = 'user-files';
